@@ -2,7 +2,7 @@ spring:
   datasource:
     url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/quickcheck?serverTimezone=UTC}
     username: ${JDBC_DATABASE_USERNAME:root}
-    password: ""
+    password: ${JDBC_DATABASE_PASSWORD:abc}
     hikari:
       connection-timeout: 30000
       maximum-pool-size: 10

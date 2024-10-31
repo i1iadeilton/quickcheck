@@ -1,5 +1,6 @@
 package io.bootify.quickcheck.model;
 
+import io.bootify.quickcheck.domain.Usuario;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
@@ -42,87 +43,6 @@ public class ClienteDTO {
     private List<@Size(max = 255) String> comorbidades;
 
     @ClienteUsuarioUnique
-    private Long usuario;
-    
-    // Getters e setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Integer getIdade() {
-        return idade;
-    }
-
-    public void setIdade(Integer idade) {
-        this.idade = idade;
-    }
-
-    public LocalDate getNascimento() {
-        return nascimento;
-    }
-
-    public void setNascimento(LocalDate nascimento) {
-        this.nascimento = nascimento;
-    }
-
-    public String getSexo() {
-        return sexo;
-    }
-
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
-    public String getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
-    }
-
-    public String getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getNumeroCartaoSUS() {
-        return numeroCartaoSUS;
-    }
-
-    public void setNumeroCartaoSUS(String numeroCartaoSUS) {
-        this.numeroCartaoSUS = numeroCartaoSUS;
-    }
-
-    public List<String> getComorbidades() {
-        return comorbidades;
-    }
-
-    public void setComorbidades(List<String> comorbidades) {
-        this.comorbidades = comorbidades;
-    }
-
-    public Long getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Long usuario) {
-        this.usuario = usuario;
-    }
+    private Usuario usuario;
 
 }

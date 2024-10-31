@@ -1,5 +1,6 @@
 package io.bootify.quickcheck.model;
 
+import io.bootify.quickcheck.domain.Usuario;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDate;
@@ -38,6 +39,6 @@ public class FuncionarioDTO {
     private Long estabelecimento;
 
     @FuncionarioUsuarioUnique
-    private Long usuario;
+    private Usuario usuario;
 
 }

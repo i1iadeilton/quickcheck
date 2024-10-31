@@ -5,6 +5,7 @@ import io.bootify.quickcheck.domain.Funcionario;
 import io.bootify.quickcheck.domain.Horario;
 import io.bootify.quickcheck.domain.Usuario;
 import io.bootify.quickcheck.model.EstabelecimentoDTO;
+import io.bootify.quickcheck.model.FuncionarioDTO;
 import io.bootify.quickcheck.repos.EstabelecimentoRepository;
 import io.bootify.quickcheck.repos.FuncionarioRepository;
 import io.bootify.quickcheck.repos.HorarioRepository;
@@ -72,7 +73,7 @@ public class EstabelecimentoService {
         estabelecimentoDTO.setHorarioFuncionamento(estabelecimento.getHorarioFuncionamento());
         estabelecimentoDTO.setDescricao(estabelecimento.getDescricao());
         estabelecimentoDTO.setAssinante(estabelecimento.getAssinante());
-        estabelecimentoDTO.setUsuario(estabelecimento.getUsuario() == null ? null : estabelecimento.getUsuario().getId());
+        estabelecimentoDTO.setUsuario(estabelecimento.getUsuario() == null ? null : estabelecimento.getUsuario());
         return estabelecimentoDTO;
     }
 
@@ -84,7 +85,7 @@ public class EstabelecimentoService {
         estabelecimento.setHorarioFuncionamento(estabelecimentoDTO.getHorarioFuncionamento());
         estabelecimento.setDescricao(estabelecimentoDTO.getDescricao());
         estabelecimento.setAssinante(estabelecimentoDTO.getAssinante());
-        final Usuario usuario = estabelecimentoDTO.getUsuario() == null ? null : usuarioRepository.findById(estabelecimentoDTO.getUsuario())
+        final Usuario usuario = estabelecimentoDTO.getUsuario() == null ? null : usuarioRepository.findById(estabelecimentoDTO.getUsuario().getId())
                 .orElseThrow(() -> new NotFoundException("usuario not found"));
         estabelecimento.setUsuario(usuario);
         return estabelecimento;
@@ -113,4 +114,8 @@ public class EstabelecimentoService {
         return null;
     }
 
+    public EstabelecimentoDTO getEstabelecimentoByUsuario(Usuario usuario) {
+        Estabelecimento estabelecimento = estabelecimentoRepository.findFirstByUsuario(usuario);
+        return mapToDTO(estabelecimento, new EstabelecimentoDTO());
+    }
 }

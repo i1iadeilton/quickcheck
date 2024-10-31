@@ -1,5 +1,8 @@
 package io.bootify.quickcheck.model;
 
+import io.bootify.quickcheck.domain.Cliente;
+import io.bootify.quickcheck.domain.Estabelecimento;
+import io.bootify.quickcheck.domain.Funcionario;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import java.time.LocalDateTime;
@@ -29,10 +32,10 @@ public class HorarioDTO {
     @Size(max = 500)
     private String prontuario;
 
-    private Long funcionario;
+    private Funcionario funcionario;
 
-    private Long estabelecimento;
+    private Estabelecimento estabelecimento;
 
-    private Long cliente;
+    private Cliente cliente;
 
 }

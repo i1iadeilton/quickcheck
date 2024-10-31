@@ -44,15 +44,16 @@ public class Horario {
     @Column(length = 500)
     private String prontuario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    // Passar o FetchType.EAGER se quiser receber o objeto completo na resposta da API
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "funcionario_id")
     private Funcionario funcionario;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
 

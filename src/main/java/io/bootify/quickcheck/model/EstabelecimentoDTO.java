@@ -1,5 +1,6 @@
 package io.bootify.quickcheck.model;
 
+import io.bootify.quickcheck.domain.Usuario;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
@@ -36,6 +37,6 @@ public class EstabelecimentoDTO {
     private Boolean assinante;
 
     @EstabelecimentoUsuarioUnique
-    private Long usuario;
+    private Usuario usuario;
 
 }

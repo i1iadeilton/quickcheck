@@ -1,5 +1,6 @@
 package io.bootify.quickcheck.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -48,13 +49,17 @@ public class Estabelecimento {
     @Column(nullable = false, columnDefinition = "tinyint", length = 1)
     private Boolean assinante;
 
+    // JsonBackReference serve para obter o objeto associado (entidade relacionada) em formato JSON
     @OneToMany(mappedBy = "estabelecimento")
+    @JsonBackReference
     private Set<Horario> horarios;
 
     @OneToMany(mappedBy = "estabelecimento")
+    @JsonBackReference
     private Set<Funcionario> funcionarios;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    // Passar o FetchType.EAGER se quiser receber o objeto completo na resposta da API
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", unique = true)
     private Usuario usuario;
 
