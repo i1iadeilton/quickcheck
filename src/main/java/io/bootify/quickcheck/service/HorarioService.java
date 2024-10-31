@@ -70,9 +70,9 @@ public class HorarioService {
         horarioDTO.setStatus(horario.getStatus());
         horarioDTO.setDescricao(horario.getDescricao());
         horarioDTO.setProntuario(horario.getProntuario());
-        horarioDTO.setFuncionario(horario.getFuncionario() == null ? null : horario.getFuncionario().getId());
-        horarioDTO.setEstabelecimento(horario.getEstabelecimento() == null ? null : horario.getEstabelecimento().getId());
-        horarioDTO.setCliente(horario.getCliente() == null ? null : horario.getCliente().getId());
+        horarioDTO.setFuncionario(horario.getFuncionario() == null ? null : horario.getFuncionario());
+        horarioDTO.setEstabelecimento(horario.getEstabelecimento() == null ? null : horario.getEstabelecimento());
+        horarioDTO.setCliente(horario.getCliente() == null ? null : horario.getCliente());
         return horarioDTO;
     }
 
@@ -82,14 +82,14 @@ public class HorarioService {
         horario.setStatus(horarioDTO.getStatus());
         horario.setDescricao(horarioDTO.getDescricao());
         horario.setProntuario(horarioDTO.getProntuario());
-        final Funcionario funcionario = horarioDTO.getFuncionario() == null ? null : funcionarioRepository.findById(horarioDTO.getFuncionario())
-                .orElseThrow(() -> new NotFoundException("funcionario not found"));
+        final Funcionario funcionario = horarioDTO.getFuncionario() == null ? null : funcionarioRepository.findById(horarioDTO.getFuncionario().getId())
+                .orElseThrow(() -> new NotFoundException("Funcionario not found"));
         horario.setFuncionario(funcionario);
-        final Estabelecimento estabelecimento = horarioDTO.getEstabelecimento() == null ? null : estabelecimentoRepository.findById(horarioDTO.getEstabelecimento())
-                .orElseThrow(() -> new NotFoundException("estabelecimento not found"));
+        final Estabelecimento estabelecimento = horarioDTO.getEstabelecimento() == null ? null : estabelecimentoRepository.findById(horarioDTO.getEstabelecimento().getId())
+                .orElseThrow(() -> new NotFoundException("Estabelecimento not found"));
         horario.setEstabelecimento(estabelecimento);
-        final Cliente cliente = horarioDTO.getCliente() == null ? null : clienteRepository.findById(horarioDTO.getCliente())
-                .orElseThrow(() -> new NotFoundException("cliente not found"));
+        final Cliente cliente = horarioDTO.getCliente() == null ? null : clienteRepository.findById(horarioDTO.getCliente().getId())
+                .orElseThrow(() -> new NotFoundException("Cliente not found"));
         horario.setCliente(cliente);
         return horario;
     }

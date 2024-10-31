@@ -112,4 +112,7 @@ public class UsuarioService {
         return null;
     }
 
+    public Usuario login(String email, String senha, String role){
+        return usuarioRepository.findFirstByEmailAndSenhaAndRole(email, senha, role);
+    }
 }

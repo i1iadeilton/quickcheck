@@ -1,6 +1,14 @@
 package io.bootify.quickcheck.rest;
 
+import io.bootify.quickcheck.domain.Login;
+import io.bootify.quickcheck.domain.Usuario;
+import io.bootify.quickcheck.model.ClienteDTO;
+import io.bootify.quickcheck.model.EstabelecimentoDTO;
+import io.bootify.quickcheck.model.FuncionarioDTO;
 import io.bootify.quickcheck.model.UsuarioDTO;
+import io.bootify.quickcheck.service.ClienteService;
+import io.bootify.quickcheck.service.EstabelecimentoService;
+import io.bootify.quickcheck.service.FuncionarioService;
 import io.bootify.quickcheck.service.UsuarioService;
 import io.bootify.quickcheck.util.ReferencedException;
 import io.bootify.quickcheck.util.ReferencedWarning;
@@ -23,11 +31,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/api/usuarios", produces = MediaType.APPLICATION_JSON_VALUE)
 public class UsuarioResource {
-
     private final UsuarioService usuarioService;
+    private final ClienteService clienteService;
+    private final FuncionarioService funcionarioService;
+    private final EstabelecimentoService estabelecimentoService;
 
-    public UsuarioResource(final UsuarioService usuarioService) {
+    public UsuarioResource(final UsuarioService usuarioService,
+                           ClienteService clienteService,
+                           FuncionarioService funcionarioService,
+                           EstabelecimentoService estabelecimentoService) {
         this.usuarioService = usuarioService;
+        this.clienteService = clienteService;
+        this.funcionarioService = funcionarioService;
+        this.estabelecimentoService = estabelecimentoService;
     }
 
     @GetMapping
@@ -65,4 +81,23 @@ public class UsuarioResource {
         return ResponseEntity.noContent().build();
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@RequestBody Login login) {
+        Usuario usuario = usuarioService.login(login.getEmail(), login.getSenha(), login.getRole());
+        return switch (usuario.getRole()) {
+            case "CLIENTE" -> {
+                ClienteDTO cliente = clienteService.getClienteByUsuario(usuario);
+                yield ResponseEntity.ok(cliente);
+            }
+            case "FUNCIONARIO" -> {
+                FuncionarioDTO funcionario = funcionarioService.getFuncionarioByUsuario(usuario);
+                yield ResponseEntity.ok(funcionario);
+            }
+            case "ESTABELECIMENTO" -> {
+                EstabelecimentoDTO estabelecimento = estabelecimentoService.getEstabelecimentoByUsuario(usuario);
+                yield ResponseEntity.ok(estabelecimento);
+            }
+            default -> ResponseEntity.ok(null);
+        };
+    }
 }

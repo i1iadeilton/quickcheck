@@ -1,5 +1,6 @@
 package io.bootify.quickcheck.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
@@ -50,15 +51,17 @@ public class Funcionario {
     @Column(nullable = false)
     private String crm;
 
+    // JsonBackReference serve para obter o objeto associado (entidade relacionada) em formato JSON
     @OneToMany(mappedBy = "funcionario")
+    @JsonBackReference
     private Set<Horario> horarios;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "estabelecimento_id")
     private Estabelecimento estabelecimento;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id", unique = true)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @CreatedDate

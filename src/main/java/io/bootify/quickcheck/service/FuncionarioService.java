@@ -1,9 +1,7 @@
 package io.bootify.quickcheck.service;
 
-import io.bootify.quickcheck.domain.Estabelecimento;
-import io.bootify.quickcheck.domain.Funcionario;
-import io.bootify.quickcheck.domain.Horario;
-import io.bootify.quickcheck.domain.Usuario;
+import io.bootify.quickcheck.domain.*;
+import io.bootify.quickcheck.model.ClienteDTO;
 import io.bootify.quickcheck.model.FuncionarioDTO;
 import io.bootify.quickcheck.repos.EstabelecimentoRepository;
 import io.bootify.quickcheck.repos.FuncionarioRepository;
@@ -73,7 +71,7 @@ public class FuncionarioService {
         funcionarioDTO.setEspecialidade(funcionario.getEspecialidade());
         funcionarioDTO.setCrm(funcionario.getCrm());
         funcionarioDTO.setEstabelecimento(funcionario.getEstabelecimento() == null ? null : funcionario.getEstabelecimento().getId());
-        funcionarioDTO.setUsuario(funcionario.getUsuario() == null ? null : funcionario.getUsuario().getId());
+        funcionarioDTO.setUsuario(funcionario.getUsuario() == null ? null : funcionario.getUsuario());
         return funcionarioDTO;
     }
 
@@ -88,7 +86,7 @@ public class FuncionarioService {
         final Estabelecimento estabelecimento = funcionarioDTO.getEstabelecimento() == null ? null : estabelecimentoRepository.findById(funcionarioDTO.getEstabelecimento())
                 .orElseThrow(() -> new NotFoundException("estabelecimento not found"));
         funcionario.setEstabelecimento(estabelecimento);
-        final Usuario usuario = funcionarioDTO.getUsuario() == null ? null : usuarioRepository.findById(funcionarioDTO.getUsuario())
+        final Usuario usuario = funcionarioDTO.getUsuario() == null ? null : usuarioRepository.findById(funcionarioDTO.getUsuario().getId())
                 .orElseThrow(() -> new NotFoundException("usuario not found"));
         funcionario.setUsuario(usuario);
         return funcionario;
@@ -111,4 +109,8 @@ public class FuncionarioService {
         return null;
     }
 
+    public FuncionarioDTO getFuncionarioByUsuario(Usuario usuario) {
+        Funcionario funcionario = funcionarioRepository.findFirstByUsuario(usuario);
+        return mapToDTO(funcionario, new FuncionarioDTO());
+    }
 }

@@ -68,7 +68,7 @@ public class ClienteService {
         clienteDTO.setLongitude(cliente.getLongitude());
         clienteDTO.setNumeroCartaoSUS(cliente.getNumeroCartaoSUS());
         clienteDTO.setComorbidades(cliente.getComorbidades());
-        clienteDTO.setUsuario(cliente.getUsuario() == null ? null : cliente.getUsuario().getId());
+        clienteDTO.setUsuario(cliente.getUsuario() == null ? null : cliente.getUsuario());
         return clienteDTO;
     }
 
@@ -81,7 +81,7 @@ public class ClienteService {
         cliente.setLongitude(clienteDTO.getLongitude());
         cliente.setNumeroCartaoSUS(clienteDTO.getNumeroCartaoSUS());
         cliente.setComorbidades(clienteDTO.getComorbidades());
-        final Usuario usuario = clienteDTO.getUsuario() == null ? null : usuarioRepository.findById(clienteDTO.getUsuario())
+        final Usuario usuario = clienteDTO.getUsuario() == null ? null : usuarioRepository.findById(clienteDTO.getUsuario().getId())
                 .orElseThrow(() -> new NotFoundException("usuario not found"));
         cliente.setUsuario(usuario);
         return cliente;
@@ -104,4 +104,8 @@ public class ClienteService {
         return null;
     }
 
+    public ClienteDTO getClienteByUsuario(Usuario usuario) {
+        Cliente cliente = clienteRepository.findFirstByUsuario(usuario);
+        return mapToDTO(cliente, new ClienteDTO());
+    }
 }
