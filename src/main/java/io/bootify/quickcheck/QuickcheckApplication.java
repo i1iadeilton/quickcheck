@@ -48,15 +48,29 @@ public class QuickcheckApplication implements CommandLineRunner {
 
         // Atributos comuns para Cliente, Funcionario e Estabelecimento
         String[] pacientes = {
-                "Carlos Silva", "Mariana Oliveira", "Fernanda Costa", "João Souza",
-                "Paula Martins", "Ricardo Alves", "Ana Paula Santos", "Guilherme Rocha",
-                "Julia Ferreira", "Pedro Lima"
+                "Carlos Silva",
+                "Mariana Oliveira",
+                "Fernanda Costa",
+                "João Souza",
+                "Paula Martins",
+                "Ricardo Alves",
+                "Ana Paula Santos",
+                "Guilherme Rocha",
+                "Julia Ferreira",
+                "Pedro Lima"
         };
 
         String[] medicos = {
-                "Dr. Roberto Mendes", "Dra. Ana Beatriz Fonseca", "Dr. Marcelo Carvalho",
-                "Dra. Patrícia Almeida", "Dr. Henrique Ramos", "Dra. Maria Helena Siqueira",
-                "Dr. Paulo Ricardo", "Dra. Larissa Lopes", "Dr. Fernando Nunes", "Dra. Camila Reis"
+                "Dr. Roberto Mendes",
+                "Dra. Ana Beatriz Fonseca",
+                "Dr. Marcelo Carvalho",
+                "Dra. Patrícia Almeida",
+                "Dr. Henrique Ramos",
+                "Dra. Maria Helena Siqueira",
+                "Dr. Paulo Ricardo",
+                "Dra. Larissa Lopes",
+                "Dr. Fernando Nunes",
+                "Dra. Camila Reis"
         };
 
         String[] hospitais = {
@@ -73,24 +87,42 @@ public class QuickcheckApplication implements CommandLineRunner {
         };
 
         String[] emailsPacientes = {
-                "carlos.silva@gmail.com", "mariana.oliveira@yahoo.com", "fernanda.costa@hotmail.com",
-                "joao.souza@gmail.com", "paula.martins@yahoo.com", "ricardo.alves@hotmail.com",
-                "ana.santos@gmail.com", "guilherme.rocha@yahoo.com", "julia.ferreira@hotmail.com",
+                "carlos.silva@gmail.com",
+                "mariana.oliveira@yahoo.com",
+                "fernanda.costa@hotmail.com",
+                "joao.souza@gmail.com",
+                "paula.martins@yahoo.com",
+                "ricardo.alves@hotmail.com",
+                "ana.santos@gmail.com",
+                "guilherme.rocha@yahoo.com",
+                "julia.ferreira@hotmail.com",
                 "pedro.lima@gmail.com"
         };
 
         String[] emailsMedicos = {
-                "dr.roberto.mendes@hospital.com", "dra.ana.fonseca@clinica.com", "dr.marcelo.carvalho@hospital.com",
-                "dra.patricia.almeida@clinica.com", "dr.henrique.ramos@hospital.com", "dra.maria.helena@clinica.com",
-                "dr.paulo.ricardo@hospital.com", "dra.larissa.lopes@clinica.com", "dr.fernando.nunes@hospital.com",
+                "dr.roberto.mendes@hospital.com",
+                "dra.ana.fonseca@clinica.com",
+                "dr.marcelo.carvalho@hospital.com",
+                "dra.patricia.almeida@clinica.com",
+                "dr.henrique.ramos@hospital.com",
+                "dra.maria.helena@clinica.com",
+                "dr.paulo.ricardo@hospital.com",
+                "dra.larissa.lopes@clinica.com",
+                "dr.fernando.nunes@hospital.com",
                 "dra.camila.reis@clinica.com"
         };
 
         String[] emailsHospitais = {
-                "contato@saojose.com.br", "atendimento@santamonica.com.br", "info@hospitalcentral.com.br",
-                "contato@vidasade.com.br", "info@hospitalcoracao.com.br", "atendimento@medicabrasil.com.br",
-                "contato@esperancahospital.com.br", "info@clinicadopovo.com.br", "atendimento@santamaria.com.br",
-                "contato@centromedicointegrado.com.br"
+                "contato@hospitalportugues.com.br",
+                "atendimento@hospitalrestauracao.pe.gov.br",
+                "contato@realhospitalportugues.com.br",
+                "contato@santajoana.com.br",
+                "atendimento@imip.org.br",
+                "contato@hospitalesperanca.com.br",
+                "atendimento@jaymedafonte.com.br",
+                "contato@clinicasantaclara.com.br",
+                "contato@urocenter.com.br",
+                "contato@hospitalotaviodefreitas.pe.gov.br"
         };
 
         String[] telefones = {
@@ -127,21 +159,55 @@ public class QuickcheckApplication implements CommandLineRunner {
         };
 
         String[] enderecosHospitais = {
-                "Avenida Agamenon Magalhães, 1000, Graças, Recife, PE",
-                "Rua do Hospital, 2000, Santo Antonio, Recife, PE",
-                "Praça da Esperança, 3000, Boa Vista, Recife, PE",
-                "Rua das Emergências, 4000, Campo Grande, Recife, PE",
-                "Avenida Presidente Kennedy, 5000, Imbiribeira, Recife, PE",
-                "Rua da Cura, 6000, Pina, Recife, PE",
-                "Avenida do Coração, 7000, Boa Viagem, Recife, PE",
-                "Rua da Recuperação, 8000, Casa Amarela, Recife, PE",
-                "Praça da Saúde, 9000, Casa Forte, Recife, PE",
-                "Rua da Vida, 10000, Cordeiro, Recife, PE"
+                "Av. Gov. Agamenon Magalhães, 4760 - Ilha do Leite, Recife - PE, 50070-160",  // Hospital Português
+                "Av. Gov. Agamenon Magalhães, s/n - Derby, Recife - PE, 52010-902",           // Hospital da Restauração
+                "R. Oswaldo Cruz, 282 - Soledade, Recife - PE, 50070-150",                    // Real Hospital Português
+                "R. Joaquim Nabuco, 150 - Graças, Recife - PE, 52011-000",                    // Hospital Santa Joana
+                "R. dos Coelhos, 300 - Boa Vista, Recife - PE, 50070-550",                    // IMIP
+                "Av. Mal. Mascarenhas de Morais, 3151 - Imbiribeira, Recife - PE, 51150-000", // Hospital Esperança
+                "R. Benfica, 100 - Derby, Recife - PE, 52011-000",                            // Hospital Jayme da Fonte
+                "Av. João de Barros, 200 - Boa Vista, Recife - PE, 50050-180",                // Clínica Santa Clara
+                "R. das Creoulas, 144 - Graças, Recife - PE, 52011-000",                      // Clínica Urocenter
+                "R. Aprígio Guimarães, s/n - Sancho, Recife - PE, 50781-460"                  // Hospital Otávio de Freitas
         };
 
-        String[] imagens = {
-                "img1.png", "img2.jpg", "img3.png", "img4.jpg", "img5.png",
-                "img6.jpg", "img7.png", "img8.jpg", "img9.png", "img10.jpg"
+        String[] imagensHospitais = {
+                "https://s2-g1.glbimg.com/Z4ta-OLtQdwXmNj0ewegM0ez5us=/0x0:1302x781/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/0/q/TKMJ6pQwKWRL8YtSlUYg/hospital-portugues-recife.jpg",
+                "https://www.gncnews.com.br/assets/uploads/49fb630a245e09cef19aa35f13378556.jpeg",
+                "https://s2.glbimg.com/q_Q1iIfdSIVAHnYlee8VLWfoQrU=/620x465/s.glbimg.com/jo/g1/f/original/2016/12/05/complexo_rhp_dia.jpg",
+                "https://www.hospitalsantajoanarecife.com.br/sites/hospitalsantajoanarecifestudio/files/2023-10/MOBILE_768x600_97.jpg",
+                "https://imip.org.br/wp-content/uploads/2023/06/WhatsApp-Image-2023-06-29-at-10.18.25.jpeg",
+                "https://wp.rededorsaoluiz.com.br/esperanca-recife/wp-content/uploads/sites/20/2022/06/Fachada-Esp-Recife-3-scaled.jpg",
+                "https://hospitalmed.com.br/portal/wp-content/uploads/2017/12/fachada_4.jpg",
+                "https://laboratoriosantaclara.com.br/wp-content/uploads/2021/09/IMG_7056.jpg",
+                "https://drgilbertoalmeida.com.br/wp-content/uploads/2023/09/urocenter.jpg",
+                "https://portal-homologacao.saude.pe.gov.br/wp-content/uploads/2024/06/HOF-2.jpg"
+        };
+
+        String[] imagensMedicos = {
+                "https://media.istockphoto.com/id/177373093/photo/indian-male-doctor.jpg?s=612x612&w=0&k=20&c=5FkfKdCYERkAg65cQtdqeO_D0JMv6vrEdPw3mX1Lkfg=",
+                "https://www.shutterstock.com/image-photo/profile-photo-attractive-family-doc-600nw-1724693776.jpg",
+                "https://t4.ftcdn.net/jpg/02/60/04/09/360_F_260040900_oO6YW1sHTnKxby4GcjCvtypUCWjnQRg5.jpg",
+                "https://st4.depositphotos.com/12985790/21800/i/450/depositphotos_218003704-stock-photo-smiling-young-female-doctor-medical.jpg",
+                "https://thumbs.dreamstime.com/b/happy-smiling-black-doctor-looking-camera-african-medical-office-portrait-man-working-laptop-modern-hospital-confident-164999333.jpg",
+                "https://img.freepik.com/premium-photo/female-doctor-professional-health-care-hospital-stock-photo_215372-2035.jpg",
+                "https://media.istockphoto.com/id/1311511363/photo/headshot-portrait-of-smiling-male-doctor-with-tablet.jpg?s=612x612&w=0&k=20&c=w5TecWtlA_ZHRpfGh20II-nq5AvnhpFu6BfOfMHuLMA=",
+                "https://media.istockphoto.com/id/1346711310/photo/portrait-of-smiling-female-doctor-wearing-uniform-standing.jpg?s=612x612&w=0&k=20&c=nPsBL7HwQ7y14HP6J7lcCyKl51X5pPSPGnweXHFzT9o=",
+                "https://www.shutterstock.com/image-photo/profile-picture-smiling-old-male-600nw-1769847965.jpg",
+                "https://www.shutterstock.com/image-photo/head-shot-woman-wearing-white-600nw-1529466836.jpg"
+        };
+
+        String[] imagensPacientes = {
+                "https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg",
+                "https://st.depositphotos.com/1770836/1372/i/450/depositphotos_13720689-stock-photo-young-businesswoman.jpg",
+                "https://st4.depositphotos.com/13193658/25036/i/450/depositphotos_250363326-stock-photo-smiling-attractive-woman-white-sweater.jpg",
+                "https://t4.ftcdn.net/jpg/02/24/86/95/360_F_224869519_aRaeLneqALfPNBzg0xxMZXghtvBXkfIA.jpg",
+                "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?cs=srgb&dl=pexels-olly-733872.jpg&fm=jpg",
+                "https://themost.com.tr/wp-content/uploads/2023/04/tm-men1_0001_TM-MEN3.jpg",
+                "https://cdn.pixabay.com/photo/2024/02/04/18/27/woman-8552807_640.jpg",
+                "https://images.pexels.com/photos/842811/pexels-photo-842811.jpeg?cs=srgb&dl=pexels-olly-842811.jpg&fm=jpg",
+                "https://images.pexels.com/photos/712513/pexels-photo-712513.jpeg?cs=srgb&dl=pexels-olly-712513.jpg&fm=jpg",
+                "https://www.sabc1.co.za/sabc1/wp-content/uploads/2022/09/GoodMen9276_1.jpg"
         };
 
         // Atributos exclusivos de Cliente
@@ -302,11 +368,11 @@ public class QuickcheckApplication implements CommandLineRunner {
                 // Gerando senhas aleatorias para os usuarios
                 Integer randomNumberCliente = Math.abs(new Random().nextInt());
                 String senhaCliente = randomNumberCliente.toString();
-                // Usuario (Cliente)
+                // Usuario (Cliente = Paciente)
                 Usuario usuarioCliente = new Usuario();
                 usuarioCliente.setEmail(emailsPacientes[i]);
                 usuarioCliente.setNome(pacientes[i]);
-                usuarioCliente.setImagem(imagens[i]);
+                usuarioCliente.setImagem(imagensPacientes[i]);
                 usuarioCliente.setEndereco(enderecosPacientes[i]);
                 usuarioCliente.setTelefone(telefones[i]);
                 usuarioCliente.setRole("CLIENTE");
@@ -327,11 +393,11 @@ public class QuickcheckApplication implements CommandLineRunner {
                 // Gerando senhas aleatorias para os usuarios
                 Integer randomNumberEstabelecimento = Math.abs(new Random().nextInt());
                 String senhaEstabelecimento = randomNumberEstabelecimento.toString();
-                // Usuario (Estabelecimento)
+                // Usuario (Estabelecimento = Hospitais e Clínicas)
                 Usuario usuarioEstabelecimento = new Usuario();
                 usuarioEstabelecimento.setEmail(emailsHospitais[i]);
                 usuarioEstabelecimento.setNome(hospitais[i]);
-                usuarioEstabelecimento.setImagem(imagens[i]);
+                usuarioEstabelecimento.setImagem(imagensHospitais[i]);
                 usuarioEstabelecimento.setEndereco(enderecosHospitais[i]);
                 usuarioEstabelecimento.setTelefone(telefones[i]);
                 usuarioEstabelecimento.setRole("ESTABELECIMENTO");
@@ -350,11 +416,11 @@ public class QuickcheckApplication implements CommandLineRunner {
                 // Gerando senhas aleatorias para os usuarios
                 Integer randomNumberFuncionario = Math.abs(new Random().nextInt());
                 String senhaFuncionario = randomNumberFuncionario.toString();
-                // Usuario (Funcionario)
+                // Usuario (Funcionario = Médico)
                 Usuario usuarioFuncionario = new Usuario();
                 usuarioFuncionario.setEmail(emailsMedicos[i]);
                 usuarioFuncionario.setNome(medicos[i]);
-                usuarioFuncionario.setImagem(imagens[i]);
+                usuarioFuncionario.setImagem(imagensMedicos[i]);
                 usuarioFuncionario.setEndereco(enderecosMedicos[i]);
                 usuarioFuncionario.setTelefone(telefones[i]);
                 usuarioFuncionario.setRole("FUNCIONARIO");
