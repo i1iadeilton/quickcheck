@@ -60,10 +60,16 @@ public class QuickcheckApplication implements CommandLineRunner {
         };
 
         String[] hospitais = {
-                "Hospital São José", "Clínica Santa Mônica", "Hospital Geral Central",
-                "Clínica Vida Saúde", "Hospital do Coração", "Clínica Médica Brasil",
-                "Hospital Municipal da Esperança", "Clínica do Povo", "Hospital Santa Maria",
-                "Centro Médico Integrado"
+                "Hospital Português",
+                "Hospital da Restauração",
+                "Real Hospital Português",
+                "Hospital Santa Joana",
+                "IMIP - Instituto de Medicina Integral Professor Fernando Figueira",
+                "Hospital Esperança",
+                "Hospital Jayme da Fonte",
+                "Clínica Santa Clara",
+                "Clínica Urocenter",
+                "Hospital Otávio de Freitas",
         };
 
         String[] emailsPacientes = {
@@ -157,13 +163,13 @@ public class QuickcheckApplication implements CommandLineRunner {
 
         // Latitude e longitude são usados apenas por Cliente e Estabelecimento
         String[] latitudes = {
-                "-23.5505", "-22.9068", "-15.7801", "-19.9245", "-3.7172",
-                "-25.4290", "-30.0346", "-16.6869", "-8.0476", "-12.9714"
+                " -8.060022", "-8.062780", "-8.063784", "-8.063646", "-8.063022",
+                "-8.094518", "-8.065621", "-8.068220", "-8.060640", "-8.098850"
         };
 
         String[] longitudes = {
-                "-46.6333", "-43.1729", "-47.9292", "-43.9352", "-38.5434",
-                "-49.2671", "-51.2177", "-49.2643", "-34.8769", "-38.5014"
+                "-34.894203", "-34.895913", "-34.894301", "-34.895256", "-34.891399",
+                "-34.907735", "-34.898269", "-34.899639", "-34.891736", "-34.930136"
         };
 
         String[] numerosCartaoSUS = {
