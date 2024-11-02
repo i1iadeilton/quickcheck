@@ -1,5 +1,6 @@
 package io.bootify.quickcheck.model;
 
+import io.bootify.quickcheck.domain.Estabelecimento;
 import io.bootify.quickcheck.domain.Usuario;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -36,7 +37,7 @@ public class FuncionarioDTO {
     @Size(max = 255)
     private String crm;
 
-    private Long estabelecimento;
+    private Estabelecimento estabelecimento;
 
     @FuncionarioUsuarioUnique
     private Usuario usuario;

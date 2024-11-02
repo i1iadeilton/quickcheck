@@ -333,8 +333,8 @@ public class QuickcheckApplication implements CommandLineRunner {
         };
 
         String[] status = {
-                "Agendado", "Confirmado", "Concluído", "Cancelado", "Pendente",
-                "Agendado", "Confirmado", "Concluído", "Cancelado", "Pendente"
+                "Agendado", "Disponível", "Concluído", "Cancelado", "Pendente",
+                "Agendado", "Disponível", "Concluído", "Cancelado", "Pendente"
         };
 
         String[] descricoesHorario = {
