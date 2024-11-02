@@ -70,7 +70,7 @@ public class FuncionarioService {
         funcionarioDTO.setSexo(funcionario.getSexo());
         funcionarioDTO.setEspecialidade(funcionario.getEspecialidade());
         funcionarioDTO.setCrm(funcionario.getCrm());
-        funcionarioDTO.setEstabelecimento(funcionario.getEstabelecimento() == null ? null : funcionario.getEstabelecimento().getId());
+        funcionarioDTO.setEstabelecimento(funcionario.getEstabelecimento() == null ? null : funcionario.getEstabelecimento());
         funcionarioDTO.setUsuario(funcionario.getUsuario() == null ? null : funcionario.getUsuario());
         return funcionarioDTO;
     }
@@ -83,7 +83,7 @@ public class FuncionarioService {
         funcionario.setSexo(funcionarioDTO.getSexo());
         funcionario.setEspecialidade(funcionarioDTO.getEspecialidade());
         funcionario.setCrm(funcionarioDTO.getCrm());
-        final Estabelecimento estabelecimento = funcionarioDTO.getEstabelecimento() == null ? null : estabelecimentoRepository.findById(funcionarioDTO.getEstabelecimento())
+        final Estabelecimento estabelecimento = funcionarioDTO.getEstabelecimento() == null ? null : estabelecimentoRepository.findById(funcionarioDTO.getEstabelecimento().getId())
                 .orElseThrow(() -> new NotFoundException("estabelecimento not found"));
         funcionario.setEstabelecimento(estabelecimento);
         final Usuario usuario = funcionarioDTO.getUsuario() == null ? null : usuarioRepository.findById(funcionarioDTO.getUsuario().getId())
