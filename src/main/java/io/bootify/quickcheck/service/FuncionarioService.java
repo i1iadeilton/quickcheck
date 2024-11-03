@@ -64,7 +64,6 @@ public class FuncionarioService {
             final FuncionarioDTO funcionarioDTO) {
         funcionarioDTO.setId(funcionario.getId());
         funcionarioDTO.setCpf(funcionario.getCpf());
-        funcionarioDTO.setIdade(funcionario.getIdade());
         funcionarioDTO.setNascimento(funcionario.getNascimento());
         funcionarioDTO.setSexo(funcionario.getSexo());
         funcionarioDTO.setEspecialidade(funcionario.getEspecialidade());
@@ -77,7 +76,6 @@ public class FuncionarioService {
     private Funcionario mapToEntity(final FuncionarioDTO funcionarioDTO,
             final Funcionario funcionario) {
         funcionario.setCpf(funcionarioDTO.getCpf());
-        funcionario.setIdade(funcionarioDTO.getIdade());
         funcionario.setNascimento(funcionarioDTO.getNascimento());
         funcionario.setSexo(funcionarioDTO.getSexo());
         funcionario.setEspecialidade(funcionarioDTO.getEspecialidade());

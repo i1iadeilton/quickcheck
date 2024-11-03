@@ -61,7 +61,6 @@ public class ClienteService {
     private ClienteDTO mapToDTO(final Cliente cliente, final ClienteDTO clienteDTO) {
         clienteDTO.setId(cliente.getId());
         clienteDTO.setCpf(cliente.getCpf());
-        clienteDTO.setIdade(cliente.getIdade());
         clienteDTO.setNascimento(cliente.getNascimento());
         clienteDTO.setSexo(cliente.getSexo());
         clienteDTO.setLatitude(cliente.getLatitude());
@@ -74,7 +73,6 @@ public class ClienteService {
 
     private Cliente mapToEntity(final ClienteDTO clienteDTO, final Cliente cliente) {
         cliente.setCpf(clienteDTO.getCpf());
-        cliente.setIdade(clienteDTO.getIdade());
         cliente.setNascimento(clienteDTO.getNascimento());
         cliente.setSexo(clienteDTO.getSexo());
         cliente.setLatitude(clienteDTO.getLatitude());
