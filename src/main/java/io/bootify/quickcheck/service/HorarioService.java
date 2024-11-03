@@ -11,6 +11,8 @@ import io.bootify.quickcheck.repos.FuncionarioRepository;
 import io.bootify.quickcheck.repos.HorarioRepository;
 import io.bootify.quickcheck.util.NotFoundException;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -96,6 +98,13 @@ public class HorarioService {
 
     public List<HorarioDTO> findAllByEstabelecimentoIdAndStatus(Long estabelecimentoId, String status) {
         final List<Horario> horarios = horarioRepository.findAllByEstabelecimentoIdAndStatus(estabelecimentoId, status);
+        return horarios.stream()
+                .map(horario -> mapToDTO(horario, new HorarioDTO()))
+                .toList();
+    }
+
+    public List<HorarioDTO> findAllByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(Long estabelecimentoId, String status, Optional<String> especialidade) {
+        final List<Horario> horarios = horarioRepository.findAllByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(estabelecimentoId, status, especialidade);
         return horarios.stream()
                 .map(horario -> mapToDTO(horario, new HorarioDTO()))
                 .toList();

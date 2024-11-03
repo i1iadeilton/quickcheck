@@ -7,6 +7,7 @@ import io.bootify.quickcheck.domain.Horario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface HorarioRepository extends JpaRepository<Horario, Long> {
@@ -18,4 +19,6 @@ public interface HorarioRepository extends JpaRepository<Horario, Long> {
     Horario findFirstByCliente(Cliente cliente);
 
     List<Horario> findAllByEstabelecimentoIdAndStatus(Long estabelecimentoId, String status);
+
+    List<Horario> findAllByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(Long estabelecimentoId, String status, Optional<String> especialidade);
 }
