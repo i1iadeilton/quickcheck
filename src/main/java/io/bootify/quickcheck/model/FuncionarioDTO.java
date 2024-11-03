@@ -20,9 +20,6 @@ public class FuncionarioDTO {
     private String cpf;
 
     @NotNull
-    private Integer idade;
-
-    @NotNull
     private LocalDate nascimento;
 
     @NotNull

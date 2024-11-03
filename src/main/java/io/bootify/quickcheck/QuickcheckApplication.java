@@ -216,8 +216,6 @@ public class QuickcheckApplication implements CommandLineRunner {
                 "67890123456", "78901234567", "89012345678", "90123456789", "01234567890"
         };
 
-        Integer[] idades = {25, 32, 45, 28, 50, 37, 22, 30, 40, 29};
-
         LocalDate[] nascimentos = {
                 LocalDate.of(1998, 5, 12), LocalDate.of(1991, 3, 8), LocalDate.of(1978, 10, 15),
                 LocalDate.of(1995, 12, 30), LocalDate.of(1973, 7, 23), LocalDate.of(1986, 11, 2),
@@ -399,7 +397,6 @@ public class QuickcheckApplication implements CommandLineRunner {
                 cliente.setComorbidades(comorbidades[i]);
                 cliente.setCpf(cpfs[i]);
                 cliente.setSexo(sexos[i]);
-                cliente.setIdade(idades[i]);
                 cliente.setLatitude(latitudes[i]);
                 cliente.setLongitude(longitudes[i]);
                 cliente.setNascimento(nascimentos[i]);
@@ -446,7 +443,6 @@ public class QuickcheckApplication implements CommandLineRunner {
                 Funcionario funcionario = new Funcionario();
                 funcionario.setCpf(cpfs[i]);
                 funcionario.setSexo(sexos[i]);
-                funcionario.setIdade(idades[i]);
                 funcionario.setNascimento(nascimentos[i]);
                 funcionario.setCrm(crms[i]);
                 funcionario.setEspecialidade(especialidades[i]);

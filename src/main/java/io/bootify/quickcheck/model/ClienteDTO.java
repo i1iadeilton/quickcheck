@@ -20,9 +20,6 @@ public class ClienteDTO {
     private String cpf;
 
     @NotNull
-    private Integer idade;
-
-    @NotNull
     private LocalDate nascimento;
 
     @NotNull

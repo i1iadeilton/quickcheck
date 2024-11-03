@@ -40,9 +40,6 @@ public class Cliente {
     private String cpf;
 
     @Column(nullable = false)
-    private Integer idade;
-
-    @Column(nullable = false)
     private LocalDate nascimento;
 
     @Column(nullable = false, length = 1)
