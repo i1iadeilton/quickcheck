@@ -332,9 +332,11 @@ public class QuickcheckApplication implements CommandLineRunner {
                 LocalDateTime.of(2024, 9, 16, 13, 0)
         };
 
+        // Status: DISPONÍVEL, AGENDADO, CONCLUÍDO, CANCELADO, PENDENTE
+        // Marcando todos os status como Disponível para aparecer no mapa
         String[] status = {
-                "Agendado", "Disponível", "Concluído", "Cancelado", "Pendente",
-                "Agendado", "Disponível", "Concluído", "Cancelado", "Pendente"
+                "Disponível", "Disponível", "Disponível", "Disponível", "Disponível",
+                "Disponível", "Disponível", "Disponível", "Disponível", "Disponível"
         };
 
         String[] descricoesHorario = {
