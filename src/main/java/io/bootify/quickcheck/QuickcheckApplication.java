@@ -363,6 +363,19 @@ public class QuickcheckApplication implements CommandLineRunner {
                 "Orientações sobre alimentação saudável."
         };
 
+        String[] estabelecimentoTipos = {
+                "Hospital Geral",
+                "Hospital Especializado",
+                "Pronto Socorro Geral",
+                "Pronto Socorro Especializado",
+                "Policlínica",
+                "Hospital Geral",
+                "Hospital Especializado",
+                "Consultório",
+                "Policlínica",
+                "Hospital Geral",
+        };
+
         if (firstLoad) {
             for(int i = 0; i < pacientes.length; i++) {
                 // Gerando senhas aleatorias para os usuarios
@@ -412,6 +425,7 @@ public class QuickcheckApplication implements CommandLineRunner {
                 estabelecimento.setDescricao(descricoesHospitais[i]);
                 estabelecimento.setUsuario(usuarioEstabelecimento);
                 estabelecimento.setHorarioFuncionamento(horariosFuncionamento[i]);
+                estabelecimento.setTipo(estabelecimentoTipos[i]);
                 databaseEstabelecimento.save(estabelecimento);
                 // Gerando senhas aleatorias para os usuarios
                 Integer randomNumberFuncionario = Math.abs(new Random().nextInt());
