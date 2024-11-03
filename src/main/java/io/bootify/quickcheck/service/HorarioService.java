@@ -109,4 +109,13 @@ public class HorarioService {
                 .map(horario -> mapToDTO(horario, new HorarioDTO()))
                 .toList();
     }
+
+    public List<HorarioDTO> findAllByStatusAndEspecialidadeAndTipoAndNome(String status, String especialidade, String tipo, String nome) {
+        final List<Horario> horarios = horarioRepository
+                .findAllByStatusAndFuncionarioEspecialidadeAndFuncionarioEstabelecimentoTipoAndFuncionarioEstabelecimentoUsuarioNomeContaining(
+                status, especialidade, tipo, nome);
+        return horarios.stream()
+                .map(horario -> mapToDTO(horario, new HorarioDTO()))
+                .toList();
+    }
 }

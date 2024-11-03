@@ -21,4 +21,7 @@ public interface HorarioRepository extends JpaRepository<Horario, Long> {
     List<Horario> findAllByEstabelecimentoIdAndStatus(Long estabelecimentoId, String status);
 
     List<Horario> findAllByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(Long estabelecimentoId, String status, Optional<String> especialidade);
+
+    List<Horario> findAllByStatusAndFuncionarioEspecialidadeAndFuncionarioEstabelecimentoTipoAndFuncionarioEstabelecimentoUsuarioNomeContaining(
+            String status, String especialidade, String tipo, String nome);
 }
