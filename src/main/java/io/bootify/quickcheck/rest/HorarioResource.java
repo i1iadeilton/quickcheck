@@ -5,6 +5,8 @@ import io.bootify.quickcheck.service.HorarioService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -57,10 +59,16 @@ public class HorarioResource {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<HorarioDTO>> getHorarioByEstabelecimentoIdAndStatus(
+    public ResponseEntity<List<HorarioDTO>> getHorarioByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(
             @RequestParam Long estabelecimentoId,
-            @RequestParam String status) {
+            @RequestParam String status,
+            @RequestParam Optional<String> especialidade) {
+        if (especialidade.isPresent()) {
+            return ResponseEntity.ok(horarioService.findAllByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(estabelecimentoId, status, especialidade));
+        } else {
         return ResponseEntity.ok(horarioService.findAllByEstabelecimentoIdAndStatus(estabelecimentoId, status));
+        }
+
     }
 
 }
