@@ -56,4 +56,11 @@ public class HorarioResource {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<HorarioDTO>> getHorarioByEstabelecimentoIdAndStatus(
+            @RequestParam Long estabelecimentoId,
+            @RequestParam String status) {
+        return ResponseEntity.ok(horarioService.findAllByEstabelecimentoIdAndStatus(estabelecimentoId, status));
+    }
+
 }

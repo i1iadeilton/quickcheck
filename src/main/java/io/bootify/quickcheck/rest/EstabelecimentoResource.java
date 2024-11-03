@@ -64,4 +64,9 @@ public class EstabelecimentoResource {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<EstabelecimentoDTO>> getEstabelecimentosByTipo(
+            @RequestParam String tipo) {
+        return ResponseEntity.ok(estabelecimentoService.findEstabelecimentoByTipo(tipo));
+    }
 }

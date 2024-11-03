@@ -94,4 +94,10 @@ public class HorarioService {
         return horario;
     }
 
+    public List<HorarioDTO> findAllByEstabelecimentoIdAndStatus(Long estabelecimentoId, String status) {
+        final List<Horario> horarios = horarioRepository.findAllByEstabelecimentoIdAndStatus(estabelecimentoId, status);
+        return horarios.stream()
+                .map(horario -> mapToDTO(horario, new HorarioDTO()))
+                .toList();
+    }
 }

@@ -120,4 +120,11 @@ public class EstabelecimentoService {
         Estabelecimento estabelecimento = estabelecimentoRepository.findFirstByUsuario(usuario);
         return mapToDTO(estabelecimento, new EstabelecimentoDTO());
     }
+
+    public List<EstabelecimentoDTO> findEstabelecimentoByTipo(final String tipo) {
+        final List<Estabelecimento> estabelecimentoes = estabelecimentoRepository.findAllByTipo(tipo);
+        return estabelecimentoes.stream()
+                .map(estabelecimento -> mapToDTO(estabelecimento, new EstabelecimentoDTO()))
+                .toList();
+    }
 }
