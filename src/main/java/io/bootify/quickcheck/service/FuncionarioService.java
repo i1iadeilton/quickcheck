@@ -1,7 +1,6 @@
 package io.bootify.quickcheck.service;
 
 import io.bootify.quickcheck.domain.*;
-import io.bootify.quickcheck.model.ClienteDTO;
 import io.bootify.quickcheck.model.FuncionarioDTO;
 import io.bootify.quickcheck.repos.EstabelecimentoRepository;
 import io.bootify.quickcheck.repos.FuncionarioRepository;
@@ -112,5 +111,15 @@ public class FuncionarioService {
     public FuncionarioDTO getFuncionarioByUsuario(Usuario usuario) {
         Funcionario funcionario = funcionarioRepository.findFirstByUsuario(usuario);
         return mapToDTO(funcionario, new FuncionarioDTO());
+    }
+
+    public List<FuncionarioDTO> findAllByEspecialidadeAndEstabelecimentoNomeLikeAndEstabelecimentoTipo(String especialidade,
+                                                                                                       String estabelecimentoNome,
+                                                                                                       String estabelecimentoTipo) {
+        final List<Funcionario> funcionarios = funcionarioRepository
+                .findAllByEspecialidadeAndEstabelecimentoUsuarioNomeContainingAndEstabelecimentoTipo(especialidade, estabelecimentoNome, estabelecimentoTipo);
+        return funcionarios.stream()
+                .map(funcionario -> mapToDTO(funcionario, new FuncionarioDTO()))
+                .toList();
     }
 }

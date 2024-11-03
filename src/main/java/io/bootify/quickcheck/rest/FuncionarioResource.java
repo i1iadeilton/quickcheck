@@ -63,4 +63,13 @@ public class FuncionarioResource {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/search")
+    public ResponseEntity<List<FuncionarioDTO>> getAllByEspecialidadeAndEstabelecimentoNomeLikeAndEstabelecimentoTipo(
+            @RequestParam String especialidade,
+            @RequestParam String estabelecimentoNome,
+            @RequestParam String estabelecimentoTipo
+    ) {
+        return ResponseEntity.ok(funcionarioService
+                .findAllByEspecialidadeAndEstabelecimentoNomeLikeAndEstabelecimentoTipo(especialidade, estabelecimentoNome, estabelecimentoTipo));
+    }
 }
