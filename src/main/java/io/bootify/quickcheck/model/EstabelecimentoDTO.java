@@ -40,7 +40,6 @@ public class EstabelecimentoDTO {
     @NotNull
     private Boolean assinante;
 
-    @EstabelecimentoUsuarioUnique
     private Usuario usuario;
 
 }

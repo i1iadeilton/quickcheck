@@ -36,7 +36,6 @@ public class FuncionarioDTO {
 
     private Estabelecimento estabelecimento;
 
-    @FuncionarioUsuarioUnique
     private Usuario usuario;
 
 }

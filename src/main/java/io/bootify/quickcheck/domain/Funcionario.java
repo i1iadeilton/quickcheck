@@ -50,7 +50,7 @@ public class Funcionario {
 
     // JsonBackReference serve para obter o objeto associado (entidade relacionada) em formato JSON
     @OneToMany(mappedBy = "funcionario")
-    @JsonBackReference
+    @JsonBackReference(value = "funcionario-horarios")
     private Set<Horario> horarios;
 
     @ManyToOne(fetch = FetchType.EAGER)
