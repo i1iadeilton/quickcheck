@@ -61,16 +61,16 @@ public class QuickcheckApplication implements CommandLineRunner {
         };
 
         String[] medicos = {
-                "Dr. Roberto Mendes",
-                "Dra. Ana Beatriz Fonseca",
-                "Dr. Marcelo Carvalho",
-                "Dra. Patrícia Almeida",
-                "Dr. Henrique Ramos",
-                "Dra. Maria Helena Siqueira",
-                "Dr. Paulo Ricardo",
-                "Dra. Larissa Lopes",
-                "Dr. Fernando Nunes",
-                "Dra. Camila Reis"
+                "Roberto Mendes",
+                "Ana Beatriz Fonseca",
+                "Marcelo Carvalho",
+                "Patrícia Almeida",
+                "Henrique Ramos",
+                "Maria Helena Siqueira",
+                "Paulo Ricardo",
+                "Larissa Lopes",
+                "Fernando Nunes",
+                "Camila Reis"
         };
 
         String[] hospitais = {

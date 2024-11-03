@@ -39,7 +39,6 @@ public class ClienteDTO {
 
     private List<@Size(max = 255) String> comorbidades;
 
-    @ClienteUsuarioUnique
     private Usuario usuario;
 
 }
