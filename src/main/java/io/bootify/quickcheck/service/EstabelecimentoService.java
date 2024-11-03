@@ -73,6 +73,7 @@ public class EstabelecimentoService {
         estabelecimentoDTO.setHorarioFuncionamento(estabelecimento.getHorarioFuncionamento());
         estabelecimentoDTO.setDescricao(estabelecimento.getDescricao());
         estabelecimentoDTO.setAssinante(estabelecimento.getAssinante());
+        estabelecimentoDTO.setTipo(estabelecimento.getTipo());
         estabelecimentoDTO.setUsuario(estabelecimento.getUsuario() == null ? null : estabelecimento.getUsuario());
         return estabelecimentoDTO;
     }
@@ -85,6 +86,7 @@ public class EstabelecimentoService {
         estabelecimento.setHorarioFuncionamento(estabelecimentoDTO.getHorarioFuncionamento());
         estabelecimento.setDescricao(estabelecimentoDTO.getDescricao());
         estabelecimento.setAssinante(estabelecimentoDTO.getAssinante());
+        estabelecimento.setTipo(estabelecimentoDTO.getTipo());
         final Usuario usuario = estabelecimentoDTO.getUsuario() == null ? null : usuarioRepository.findById(estabelecimentoDTO.getUsuario().getId())
                 .orElseThrow(() -> new NotFoundException("usuario not found"));
         estabelecimento.setUsuario(usuario);

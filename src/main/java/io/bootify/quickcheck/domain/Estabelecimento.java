@@ -40,6 +40,9 @@ public class Estabelecimento {
     @Column(nullable = false)
     private String longitude;
 
+    @Column(nullable = false)
+    private String tipo;
+
     @Column(nullable = false, length = 500)
     private String horarioFuncionamento;
 

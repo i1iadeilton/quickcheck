@@ -26,6 +26,10 @@ public class EstabelecimentoDTO {
     private String longitude;
 
     @NotNull
+    @Size(max = 255)
+    private String tipo;
+
+    @NotNull
     @Size(max = 500)
     private String horarioFuncionamento;
 
