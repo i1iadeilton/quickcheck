@@ -1,42 +1,54 @@
 # Quickcheck
 
-This app was created with Bootify.io - tips on working with the code [can be found here](https://bootify.io/next-steps/).
+Aplicativo para marcação de consultas.
 
-## Development
+## Pré-requisitos
 
-Update your local database connection in `application.yml` or create your own `application-local.yml` file to override
-settings for development.
+- IDE: Intellij (recomendado)
+- Java: 17
+- Banco de Dados: MySQL Server + MySQL Workbench
 
-During development it is recommended to use the profile `local`. In IntelliJ `-Dspring.profiles.active=local` can be
-added in the VM options of the Run Configuration after enabling this property in "Modify options".
+## Instalação
 
-Lombok must be supported by your IDE. For IntelliJ install the Lombok plugin and enable annotation processing -
-[learn more](https://bootify.io/next-steps/spring-boot-with-lombok.html).
+Crie uma base de dados com o nome `quickcheck` no MySQL Workbench 
 
-After starting the application it is accessible under `localhost:8080`.
+Modifique o username e o password no arquivo `resources` > `application.yml` para conectar na sua base de dados MySQL
 
-## Build
-
-The application can be built using the following command:
-
-```
-mvnw clean package
-```
-
-Start your application with the following command - here with the profile `production`:
+Obs: 
+- O username e o password precisam ser os mesmos da sua base de dados local
+- Por padrão, o username é `root` e o password é `abc`
 
 ```
-java -Dspring.profiles.active=production -jar ./target/quickcheck-0.0.1-SNAPSHOT.jar
+spring:
+    datasource:
+        url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/quickcheck?serverTimezone=UTC}
+        username: ${JDBC_DATABASE_USERNAME:root}
+        password: ${JDBC_DATABASE_PASSWORD:abc}
 ```
 
-If required, a Docker image can be created with the Spring Boot plugin. Add `SPRING_PROFILES_ACTIVE=production` as
-environment variable when running the container.
+Para inserir os dados mockados pela primeira vez, abra o arquivo `QuickcheckApplication.java` e altere o valor da variável `firstLoad` para `true`
 
-```
-mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=io.bootify/quickcheck
-```
+Após inserir os dados, reverter a alteração (muda o valor de `firstLoad` para `false`)
 
-## Further readings
+Em seguida, no arquivo `QuickcheckApplication.java`, execute a aplicação (atalho: Shift + F10)
+
+Obs: Lombok deve estar configurado na IDE. 
+Se estiver usando o IntelliJ, instale o plugin `Lombok` e habilite `annotation processing` nas configurações -
+[ver mais](https://bootify.io/next-steps/spring-boot-with-lombok.html).
+
+Após, a API estará disponível no endereço `localhost:8080`.
+
+## Equipe
+
+- Flávio Raposo
+- João Pedro Marinho
+- José Adeilton
+- Renan Leite Vieira
+- Renan Vila Bela
+- Rian Vinícius
+- Robério José
+
+## Referências
 
 * [Maven docs](https://maven.apache.org/guides/index.html)  
 * [Spring Boot reference](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)  

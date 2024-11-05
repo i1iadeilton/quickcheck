@@ -210,6 +210,19 @@ public class QuickcheckApplication implements CommandLineRunner {
                 "https://www.sabc1.co.za/sabc1/wp-content/uploads/2022/09/GoodMen9276_1.jpg"
         };
 
+        String[] senhas = {
+                "123456",
+                "927531",
+                "615492",
+                "874321",
+                "539218",
+                "492376",
+                "761254",
+                "348975",
+                "295184",
+                "613827"
+        };
+
         // Atributos exclusivos de Cliente
         String[] cpfs = {
                 "12345678901", "23456789012", "34567890123", "45678901234", "56789012345",
@@ -378,9 +391,6 @@ public class QuickcheckApplication implements CommandLineRunner {
 
         if (firstLoad) {
             for(int i = 0; i < pacientes.length; i++) {
-                // Gerando senhas aleatorias para os usuarios
-                Integer randomNumberCliente = Math.abs(new Random().nextInt());
-                String senhaCliente = randomNumberCliente.toString();
                 // Usuario (Cliente = Paciente)
                 Usuario usuarioCliente = new Usuario();
                 usuarioCliente.setEmail(emailsPacientes[i]);
@@ -389,7 +399,7 @@ public class QuickcheckApplication implements CommandLineRunner {
                 usuarioCliente.setEndereco(enderecosPacientes[i]);
                 usuarioCliente.setTelefone(telefones[i]);
                 usuarioCliente.setRole("CLIENTE");
-                usuarioCliente.setSenha(senhaCliente);
+                usuarioCliente.setSenha(senhas[i]);
                 databaseUsuario.save(usuarioCliente);
                 // Cliente
                 Cliente cliente = new Cliente();
@@ -402,9 +412,6 @@ public class QuickcheckApplication implements CommandLineRunner {
                 cliente.setNascimento(nascimentos[i]);
                 cliente.setNumeroCartaoSUS(numerosCartaoSUS[i]);
                 databaseCliente.save(cliente);
-                // Gerando senhas aleatorias para os usuarios
-                Integer randomNumberEstabelecimento = Math.abs(new Random().nextInt());
-                String senhaEstabelecimento = randomNumberEstabelecimento.toString();
                 // Usuario (Estabelecimento = Hospitais e Clínicas)
                 Usuario usuarioEstabelecimento = new Usuario();
                 usuarioEstabelecimento.setEmail(emailsHospitais[i]);
@@ -413,7 +420,7 @@ public class QuickcheckApplication implements CommandLineRunner {
                 usuarioEstabelecimento.setEndereco(enderecosHospitais[i]);
                 usuarioEstabelecimento.setTelefone(telefones[i]);
                 usuarioEstabelecimento.setRole("ESTABELECIMENTO");
-                usuarioEstabelecimento.setSenha(senhaEstabelecimento);
+                usuarioEstabelecimento.setSenha(senhas[i]);
                 databaseUsuario.save(usuarioEstabelecimento);
                 // Estabelecimento
                 Estabelecimento estabelecimento = new Estabelecimento();
@@ -426,9 +433,6 @@ public class QuickcheckApplication implements CommandLineRunner {
                 estabelecimento.setHorarioFuncionamento(horariosFuncionamento[i]);
                 estabelecimento.setTipo(estabelecimentoTipos[i]);
                 databaseEstabelecimento.save(estabelecimento);
-                // Gerando senhas aleatorias para os usuarios
-                Integer randomNumberFuncionario = Math.abs(new Random().nextInt());
-                String senhaFuncionario = randomNumberFuncionario.toString();
                 // Usuario (Funcionario = Médico)
                 Usuario usuarioFuncionario = new Usuario();
                 usuarioFuncionario.setEmail(emailsMedicos[i]);
@@ -437,7 +441,7 @@ public class QuickcheckApplication implements CommandLineRunner {
                 usuarioFuncionario.setEndereco(enderecosMedicos[i]);
                 usuarioFuncionario.setTelefone(telefones[i]);
                 usuarioFuncionario.setRole("FUNCIONARIO");
-                usuarioFuncionario.setSenha(senhaFuncionario);
+                usuarioFuncionario.setSenha(senhas[i]);
                 databaseUsuario.save(usuarioFuncionario);
                 // Funcionario
                 Funcionario funcionario = new Funcionario();
