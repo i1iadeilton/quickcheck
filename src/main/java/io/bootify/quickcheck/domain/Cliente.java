@@ -60,8 +60,6 @@ public class Cliente {
 
     @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "usuario_id", unique = true)
-    @JsonBackReference(value = "cliente-usuario")
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Usuario usuario;
 
     // JsonBackReference serve para obter o objeto associado (entidade relacionada) em formato JSON
