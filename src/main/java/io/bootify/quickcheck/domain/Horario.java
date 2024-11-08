@@ -32,7 +32,6 @@ public class Horario {
     @Column(nullable = false)
     private LocalDateTime horarioAtendimento;
 
-    @Column(nullable = false)
     private LocalDateTime horarioAgendamento;
 
     @Column(nullable = false)
