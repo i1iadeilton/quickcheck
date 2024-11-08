@@ -19,7 +19,6 @@ public class HorarioDTO {
     @NotNull
     private LocalDateTime horarioAtendimento;
 
-    @NotNull
     private LocalDateTime horarioAgendamento;
 
     @NotNull
