@@ -354,8 +354,8 @@ public class QuickcheckApplication implements CommandLineRunner {
         // Status: DISPONÍVEL, AGENDADO, CONCLUÍDO, CANCELADO, PENDENTE
         // Marcando todos os status como Disponível para aparecer no mapa
         String[] status = {
-                "Disponível", "Disponível", "Disponível", "Disponível", "Disponível",
-                "Disponível", "Disponível", "Disponível", "Disponível", "Disponível"
+                "DISPONÍVEL", "DISPONÍVEL", "DISPONÍVEL", "DISPONÍVEL", "DISPONÍVEL",
+                "DISPONÍVEL", "DISPONÍVEL", "DISPONÍVEL", "DISPONÍVEL", "DISPONÍVEL"
         };
 
         String[] descricoesHorario = {
