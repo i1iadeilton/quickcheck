@@ -4,6 +4,8 @@ import io.bootify.quickcheck.model.HorarioDTO;
 import io.bootify.quickcheck.service.HorarioService;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -72,11 +74,12 @@ public class HorarioResource {
 
     @GetMapping("/search/estabelecimentos")
     public ResponseEntity<List<HorarioDTO>> getHorarioByStatusAndEspecialidadeAndNomeAndTipo(
+            @RequestParam LocalDateTime horarioAtendimento,
             @RequestParam String status,
             @RequestParam String especialidade,
-            @RequestParam String nome,
-            @RequestParam String tipo) {
-            return ResponseEntity.ok(horarioService.findAllByStatusAndEspecialidadeAndTipoAndNome(status, especialidade, tipo, nome));
+            @RequestParam Optional<String> nomeFuncionario,
+            @RequestParam Optional<String> nomeEstabelecimento) {
+            return ResponseEntity.ok(horarioService.findAllByHorarioAndEstabelecimentoAndFuncionario(horarioAtendimento, status, especialidade, nomeFuncionario, nomeEstabelecimento));
     }
 
 }

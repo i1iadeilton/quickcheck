@@ -38,6 +38,20 @@ Se estiver usando o IntelliJ, instale o plugin `Lombok` e habilite `annotation p
 
 Após, a API estará disponível no endereço `localhost:8080`.
 
+## Para adicionar novas rotas
+
+Modifique o arquivo `repo` da entidade desejada (e.g. `HorarioRepository`), usando o link abaixo como referẽncia:
+
+    https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
+
+Em seguida, modifique o arquivo `service` respectivo (e.g. `HorarioService`) para adicionar regras de negócio e de validação.
+
+Finalmente, modifique o arquivo resource (e.g. `HorarioResource`) para adicionar a rota desejada e os parâmetros a serem utilizados.
+
+Em resumo:
+
+    repo > service > resource
+
 ## Equipe
 
 - Flávio Raposo

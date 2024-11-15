@@ -10,6 +10,8 @@ import io.bootify.quickcheck.repos.EstabelecimentoRepository;
 import io.bootify.quickcheck.repos.FuncionarioRepository;
 import io.bootify.quickcheck.repos.HorarioRepository;
 import io.bootify.quickcheck.util.NotFoundException;
+
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -114,6 +116,14 @@ public class HorarioService {
         final List<Horario> horarios = horarioRepository
                 .findAllByStatusAndFuncionarioEspecialidadeAndFuncionarioEstabelecimentoTipoAndFuncionarioEstabelecimentoUsuarioNomeContaining(
                 status, especialidade, tipo, nome);
+        return horarios.stream()
+                .map(horario -> mapToDTO(horario, new HorarioDTO()))
+                .toList();
+    }
+
+    public List<HorarioDTO> findAllByHorarioAndEstabelecimentoAndFuncionario(LocalDateTime horarioAtendimento, String status, String especialidade, Optional<String> nomeFuncionario, Optional<String> nomeEstabelecimento) {
+        final List<Horario> horarios = horarioRepository.findAllByHorarioAtendimentoGreaterThanEqualAndStatusAndFuncionarioEspecialidadeAndFuncionarioUsuarioNomeContainingAndFuncionarioEstabelecimentoUsuarioNomeContaining(
+                horarioAtendimento, status, especialidade, nomeFuncionario, nomeEstabelecimento);
         return horarios.stream()
                 .map(horario -> mapToDTO(horario, new HorarioDTO()))
                 .toList();
