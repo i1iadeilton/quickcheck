@@ -60,20 +60,25 @@ public class HorarioResource {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/search")
-    public ResponseEntity<List<HorarioDTO>> getHorarioByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(
-            @RequestParam Long estabelecimentoId,
-            @RequestParam String status,
-            @RequestParam Optional<String> especialidade) {
-        if (especialidade.isPresent()) {
-            return ResponseEntity.ok(horarioService.findAllByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(estabelecimentoId, status, especialidade));
-        } else {
-        return ResponseEntity.ok(horarioService.findAllByEstabelecimentoIdAndStatus(estabelecimentoId, status));
+    @GetMapping("/search/clientes")
+    public ResponseEntity<List<HorarioDTO>> getHorarioByClientes(
+            @RequestParam Long clienteId,
+            @RequestParam Optional<String> status,
+            @RequestParam Optional<String> especialidade,
+            @RequestParam Optional<String> nomeFuncionario,
+            @RequestParam Optional<String> nomeEstabelecimento
+            ) {
+            return ResponseEntity.ok(horarioService.findAllByClienteIdAndStatus(
+                    clienteId,
+                    status,
+                    especialidade,
+                    nomeFuncionario,
+                    nomeEstabelecimento
+            ));
         }
-    }
 
     @GetMapping("/search/estabelecimentos")
-    public ResponseEntity<List<HorarioDTO>> getHorarioByStatusAndEspecialidadeAndNomeAndTipo(
+    public ResponseEntity<List<HorarioDTO>> getHorarioByEstabelecimentos(
             @RequestParam LocalDateTime horarioAtendimento,
             @RequestParam String status,
             @RequestParam String especialidade,

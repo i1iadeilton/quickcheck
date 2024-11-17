@@ -98,24 +98,20 @@ public class HorarioService {
         return horario;
     }
 
-    public List<HorarioDTO> findAllByEstabelecimentoIdAndStatus(Long estabelecimentoId, String status) {
-        final List<Horario> horarios = horarioRepository.findAllByEstabelecimentoIdAndStatus(estabelecimentoId, status);
-        return horarios.stream()
-                .map(horario -> mapToDTO(horario, new HorarioDTO()))
-                .toList();
-    }
-
-    public List<HorarioDTO> findAllByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(Long estabelecimentoId, String status, Optional<String> especialidade) {
-        final List<Horario> horarios = horarioRepository.findAllByEstabelecimentoIdAndStatusAndFuncionarioEspecialidade(estabelecimentoId, status, especialidade);
-        return horarios.stream()
-                .map(horario -> mapToDTO(horario, new HorarioDTO()))
-                .toList();
-    }
-
-    public List<HorarioDTO> findAllByStatusAndEspecialidadeAndTipoAndNome(String status, String especialidade, String tipo, String nome) {
-        final List<Horario> horarios = horarioRepository
-                .findAllByStatusAndFuncionarioEspecialidadeAndFuncionarioEstabelecimentoTipoAndFuncionarioEstabelecimentoUsuarioNomeContaining(
-                status, especialidade, tipo, nome);
+    public List<HorarioDTO> findAllByClienteIdAndStatus(
+            Long clienteId,
+            Optional<String> status,
+            Optional<String> especialidade,
+            Optional<String> nomeFuncionario,
+            Optional<String> nomeEstabelecimento
+    ) {
+        final List<Horario> horarios = horarioRepository.findAllByClienteIdAndOptionalFields(
+                clienteId,
+                status,
+                especialidade,
+                nomeFuncionario,
+                nomeEstabelecimento
+        );
         return horarios.stream()
                 .map(horario -> mapToDTO(horario, new HorarioDTO()))
                 .toList();
