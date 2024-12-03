@@ -44,7 +44,7 @@ public class QuickcheckApplication implements CommandLineRunner {
         // Usar apenas na primeira vez para inserir os dados (por padrão == false)
         // Mudar para true caso queira inserir os dados mockados na base de dados
         // Mudar para false caso já tenha dados inseridos, para evitar dados duplicados
-        boolean firstLoad = true;
+        boolean firstLoad = false;
 
         // Atributos comuns para Cliente, Funcionario e Estabelecimento
         String[] pacientes = {
