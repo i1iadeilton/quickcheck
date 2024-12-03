@@ -37,7 +37,22 @@ public interface HorarioRepository extends JpaRepository<Horario, Long> {
             @Param("status")  Optional<String>  status,
             @Param("especialidade")  Optional<String>  especialidade,
             @Param("nomeFuncionario")  Optional<String>  nomeFuncionario,
-            @Param("nomeEstabelecimento")  Optional<String>  nomeEstabelecimento);
+            @Param("nomeEstabelecimento")  Optional<String>  nomeEstabelecimento
+    );
+
+    @Query("SELECT h FROM Horario h " +
+            "JOIN h.funcionario f " +
+            "JOIN h.estabelecimento est " +
+            "JOIN est.usuario uest " +
+            "WHERE f.id = :funcionarioId " +
+            "AND (:status IS NULL OR h.status = :status) " +
+            "AND (:nomeEstabelecimento IS NULL OR uest.nome LIKE lower(concat('%', :nomeEstabelecimento,'%')))"
+    )
+    List<Horario> findAllByFuncionarioIdAndOptionalFields(
+            @Param("funcionarioId") Long funcionarioId,
+            @Param("status")  Optional<String>  status,
+            @Param("nomeEstabelecimento")  Optional<String>  nomeEstabelecimento
+    );
 
     List<Horario> findAllByHorarioAtendimentoGreaterThanEqualAndStatusAndFuncionarioEspecialidadeAndFuncionarioUsuarioNomeContainingAndFuncionarioEstabelecimentoUsuarioNomeContaining(
             LocalDateTime horario, String status, String especialidade, Optional<String> nomeFuncionario, Optional<String> nomeEstabelecimento);
