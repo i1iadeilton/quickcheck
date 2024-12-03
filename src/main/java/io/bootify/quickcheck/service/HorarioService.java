@@ -122,12 +122,14 @@ public class HorarioService {
     public List<HorarioDTO> findAllByFuncionarioIdAndStatus(
             Long funcionarioId,
             Optional<String>  status,
-            Optional<String>  nomeEstabelecimento
+            Optional<String>  nomeEstabelecimento,
+            Optional<String>  nomeCliente
     ) {
         final List<Horario> horarios = horarioRepository.findAllByFuncionarioIdAndOptionalFields(
                 funcionarioId,
                 status,
-                nomeEstabelecimento
+                nomeEstabelecimento,
+                nomeCliente
         );
         return horarios.stream()
                 .map(horario -> mapToDTO(horario, new HorarioDTO()))
@@ -138,13 +140,15 @@ public class HorarioService {
             Long estabelecimentoId,
             Optional<String>  status,
             Optional<String>  nomeFuncionario,
-            Optional<String>  especialidade
+            Optional<String>  especialidade,
+            Optional<String>  nomeCliente
     ) {
         final List<Horario> horarios = horarioRepository.findAllByEstabelecimentoIdAndOptionalFields(
                 estabelecimentoId,
                 status,
                 nomeFuncionario,
-                especialidade
+                especialidade,
+                nomeCliente
         );
         return horarios.stream()
                 .map(horario -> mapToDTO(horario, new HorarioDTO()))
