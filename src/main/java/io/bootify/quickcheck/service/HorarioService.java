@@ -134,6 +134,23 @@ public class HorarioService {
                 .toList();
     }
 
+    public List<HorarioDTO> findAllByEstabelecimentoIdAndStatus(
+            Long estabelecimentoId,
+            Optional<String>  status,
+            Optional<String>  nomeFuncionario,
+            Optional<String>  especialidade
+    ) {
+        final List<Horario> horarios = horarioRepository.findAllByEstabelecimentoIdAndOptionalFields(
+                estabelecimentoId,
+                status,
+                nomeFuncionario,
+                especialidade
+        );
+        return horarios.stream()
+                .map(horario -> mapToDTO(horario, new HorarioDTO()))
+                .toList();
+    }
+
     public List<HorarioDTO> findAllByHorarioAndEstabelecimentoAndFuncionario(LocalDateTime horarioAtendimento, String status, String especialidade, Optional<String> nomeFuncionario, Optional<String> nomeEstabelecimento) {
         final List<Horario> horarios = horarioRepository.findAllByHorarioAtendimentoGreaterThanEqualAndStatusAndFuncionarioEspecialidadeAndFuncionarioUsuarioNomeContainingAndFuncionarioEstabelecimentoUsuarioNomeContaining(
                 horarioAtendimento,
