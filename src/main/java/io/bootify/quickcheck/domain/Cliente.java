@@ -51,9 +51,6 @@ public class Cliente {
     @Column(nullable = false)
     private String longitude;
 
-    @Column
-    private String numeroCartaoSUS;
-
     @Column(columnDefinition = "json")
     @JdbcTypeCode(SqlTypes.JSON)
     private List<String> comorbidades;

@@ -65,7 +65,6 @@ public class ClienteService {
         clienteDTO.setSexo(cliente.getSexo());
         clienteDTO.setLatitude(cliente.getLatitude());
         clienteDTO.setLongitude(cliente.getLongitude());
-        clienteDTO.setNumeroCartaoSUS(cliente.getNumeroCartaoSUS());
         clienteDTO.setComorbidades(cliente.getComorbidades());
         clienteDTO.setUsuario(cliente.getUsuario() == null ? null : cliente.getUsuario());
         return clienteDTO;
@@ -77,7 +76,6 @@ public class ClienteService {
         cliente.setSexo(clienteDTO.getSexo());
         cliente.setLatitude(clienteDTO.getLatitude());
         cliente.setLongitude(clienteDTO.getLongitude());
-        cliente.setNumeroCartaoSUS(clienteDTO.getNumeroCartaoSUS());
         cliente.setComorbidades(clienteDTO.getComorbidades());
         final Usuario usuario = clienteDTO.getUsuario() == null ? null : usuarioRepository.findById(clienteDTO.getUsuario().getId())
                 .orElseThrow(() -> new NotFoundException("usuario not found"));
