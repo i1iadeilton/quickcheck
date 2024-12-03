@@ -92,6 +92,21 @@ public class HorarioResource {
 
     @GetMapping("/search/estabelecimentos")
     public ResponseEntity<List<HorarioDTO>> getHorarioByEstabelecimentos(
+            @RequestParam Long estabelecimentoId,
+            @RequestParam Optional<String> status,
+            @RequestParam Optional<String> nomeFuncionario,
+            @RequestParam Optional<String> especialidade
+    ) {
+        return ResponseEntity.ok(horarioService.findAllByEstabelecimentoIdAndStatus(
+                estabelecimentoId,
+                status,
+                nomeFuncionario,
+                especialidade
+        ));
+    }
+
+    @GetMapping("/search/horarios")
+    public ResponseEntity<List<HorarioDTO>> getHorarioByParams(
             @RequestParam LocalDateTime horarioAtendimento,
             @RequestParam String status,
             @RequestParam String especialidade,
