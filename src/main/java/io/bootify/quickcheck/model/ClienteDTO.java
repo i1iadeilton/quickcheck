@@ -34,9 +34,6 @@ public class ClienteDTO {
     @Size(max = 255)
     private String longitude;
 
-    @Size(max = 255)
-    private String numeroCartaoSUS;
-
     private List<@Size(max = 255) String> comorbidades;
 
     private Usuario usuario;

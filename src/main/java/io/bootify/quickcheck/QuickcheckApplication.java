@@ -44,7 +44,7 @@ public class QuickcheckApplication implements CommandLineRunner {
         // Usar apenas na primeira vez para inserir os dados (por padrão == false)
         // Mudar para true caso queira inserir os dados mockados na base de dados
         // Mudar para false caso já tenha dados inseridos, para evitar dados duplicados
-        boolean firstLoad = false;
+        boolean firstLoad = true;
 
         // Atributos comuns para Cliente, Funcionario e Estabelecimento
         String[] pacientes = {
@@ -257,13 +257,6 @@ public class QuickcheckApplication implements CommandLineRunner {
                 "-34.907735", "-34.898269", "-34.899639", "-34.891736", "-34.930136"
         };
 
-        String[] numerosCartaoSUS = {
-                "123456789012345", "234567890123456", "345678901234567",
-                "456789012345678", "567890123456789", "678901234567890",
-                "789012345678901", "890123456789012", "901234567890123",
-                "012345678901234"
-        };
-
         List[] comorbidades = new List[] {
                 List.of("Hipertensão"),
                 List.of("Diabetes"),
@@ -418,7 +411,6 @@ public class QuickcheckApplication implements CommandLineRunner {
                 cliente.setLatitude(latitudes[i]);
                 cliente.setLongitude(longitudes[i]);
                 cliente.setNascimento(nascimentos[i]);
-                cliente.setNumeroCartaoSUS(numerosCartaoSUS[i]);
                 databaseCliente.save(cliente);
                 // Usuario (Estabelecimento = Hospitais e Clínicas)
                 Usuario usuarioEstabelecimento = new Usuario();
