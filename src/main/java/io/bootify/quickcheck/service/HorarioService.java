@@ -16,7 +16,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Service
@@ -117,9 +119,29 @@ public class HorarioService {
                 .toList();
     }
 
+    public List<HorarioDTO> findAllByFuncionarioIdAndStatus(
+            Long funcionarioId,
+            Optional<String>  status,
+            Optional<String>  nomeEstabelecimento
+    ) {
+        final List<Horario> horarios = horarioRepository.findAllByFuncionarioIdAndOptionalFields(
+                funcionarioId,
+                status,
+                nomeEstabelecimento
+        );
+        return horarios.stream()
+                .map(horario -> mapToDTO(horario, new HorarioDTO()))
+                .toList();
+    }
+
     public List<HorarioDTO> findAllByHorarioAndEstabelecimentoAndFuncionario(LocalDateTime horarioAtendimento, String status, String especialidade, Optional<String> nomeFuncionario, Optional<String> nomeEstabelecimento) {
         final List<Horario> horarios = horarioRepository.findAllByHorarioAtendimentoGreaterThanEqualAndStatusAndFuncionarioEspecialidadeAndFuncionarioUsuarioNomeContainingAndFuncionarioEstabelecimentoUsuarioNomeContaining(
-                horarioAtendimento, status, especialidade, nomeFuncionario, nomeEstabelecimento);
+                horarioAtendimento,
+                status,
+                especialidade,
+                nomeFuncionario,
+                nomeEstabelecimento
+        );
         return horarios.stream()
                 .map(horario -> mapToDTO(horario, new HorarioDTO()))
                 .toList();
