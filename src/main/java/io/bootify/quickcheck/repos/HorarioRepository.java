@@ -44,30 +44,38 @@ public interface HorarioRepository extends JpaRepository<Horario, Long> {
             "JOIN h.funcionario f " +
             "JOIN h.estabelecimento est " +
             "JOIN est.usuario uest " +
+            "LEFT JOIN h.cliente cliente " +
+            "LEFT JOIN cliente.usuario ucliente " +
             "WHERE f.id = :funcionarioId " +
             "AND (:status IS NULL OR h.status = :status) " +
-            "AND (:nomeEstabelecimento IS NULL OR uest.nome LIKE lower(concat('%', :nomeEstabelecimento,'%')))"
+            "AND (:nomeEstabelecimento IS NULL OR uest.nome LIKE lower(concat('%', :nomeEstabelecimento,'%'))) " +
+            "AND (:nomeCliente IS NULL OR ucliente.nome IS NOT NULL AND ucliente.nome LIKE lower(concat('%', :nomeCliente,'%'))) "
     )
     List<Horario> findAllByFuncionarioIdAndOptionalFields(
             @Param("funcionarioId") Long funcionarioId,
             @Param("status")  Optional<String>  status,
-            @Param("nomeEstabelecimento")  Optional<String>  nomeEstabelecimento
+            @Param("nomeEstabelecimento")  Optional<String>  nomeEstabelecimento,
+            @Param("nomeCliente")  Optional<String>  nomeCliente
     );
 
     @Query("SELECT h FROM Horario h " +
             "JOIN h.estabelecimento est " +
             "JOIN h.funcionario func " +
             "JOIN func.usuario ufunc " +
+            "LEFT JOIN h.cliente cliente " +
+            "LEFT JOIN cliente.usuario ucliente " +
             "WHERE est.id = :estabelecimentoId " +
             "AND (:status IS NULL OR h.status = :status) " +
-            "AND (:nomeFuncionario IS NULL OR ufunc.nome LIKE lower(concat('%', :nomeFuncionario,'%')))" +
-            "AND (:especialidade IS NULL OR func.especialidade LIKE lower(concat('%', :especialidade,'%')))"
+            "AND (:nomeFuncionario IS NULL OR ufunc.nome LIKE lower(concat('%', :nomeFuncionario,'%'))) " +
+            "AND (:especialidade IS NULL OR func.especialidade LIKE lower(concat('%', :especialidade,'%'))) " +
+            "AND (:nomeCliente IS NULL OR ucliente.nome IS NOT NULL AND ucliente.nome LIKE lower(concat('%', :nomeCliente,'%')))"
     )
     List<Horario> findAllByEstabelecimentoIdAndOptionalFields(
             @Param("estabelecimentoId") Long estabelecimentoId,
             @Param("status")  Optional<String>  status,
             @Param("nomeFuncionario")  Optional<String>  nomeFuncionario,
-            @Param("especialidade")  Optional<String>  especialidade
+            @Param("especialidade")  Optional<String>  especialidade,
+            @Param("nomeCliente")  Optional<String>  nomeCliente
     );
 
     List<Horario> findAllByHorarioAtendimentoGreaterThanEqualAndStatusAndFuncionarioEspecialidadeAndFuncionarioUsuarioNomeContainingAndFuncionarioEstabelecimentoUsuarioNomeContaining(

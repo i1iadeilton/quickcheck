@@ -81,12 +81,14 @@ public class HorarioResource {
     public ResponseEntity<List<HorarioDTO>> getHorarioByFuncionarios(
             @RequestParam Long funcionarioId,
             @RequestParam Optional<String>  status,
-            @RequestParam Optional<String>  nomeEstabelecimento
+            @RequestParam Optional<String>  nomeEstabelecimento,
+            @RequestParam Optional<String> nomeCliente
     ) {
         return ResponseEntity.ok(horarioService.findAllByFuncionarioIdAndStatus(
                 funcionarioId,
                 status,
-                nomeEstabelecimento
+                nomeEstabelecimento,
+                nomeCliente
         ));
     }
 
@@ -95,13 +97,15 @@ public class HorarioResource {
             @RequestParam Long estabelecimentoId,
             @RequestParam Optional<String> status,
             @RequestParam Optional<String> nomeFuncionario,
-            @RequestParam Optional<String> especialidade
+            @RequestParam Optional<String> especialidade,
+            @RequestParam Optional<String> nomeCliente
     ) {
         return ResponseEntity.ok(horarioService.findAllByEstabelecimentoIdAndStatus(
                 estabelecimentoId,
                 status,
                 nomeFuncionario,
-                especialidade
+                especialidade,
+                nomeCliente
         ));
     }
 
