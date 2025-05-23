@@ -1,24 +1,24 @@
 # Quickcheck
 
-Aplicativo para marcação de consultas.
+Appointment scheduling application.
 
-## Pré-requisitos
+## Prerequisites
 
-- IDE: Intellij (recomendado)
+- IDE: IntelliJ (recommended)
 - Java: 17
-- Banco de Dados: MySQL Server + MySQL Workbench
+- Database: MySQL Server + MySQL Workbench
 
-## Instalação
+## Installation
 
-Crie uma base de dados com o nome `quickcheck` no MySQL Workbench 
+Create a database named `quickcheck` in MySQL Workbench.
 
-Modifique o username e o password no arquivo `resources` > `application.yml` para conectar na sua base de dados MySQL
+Modify the `username` and `password` in the `resources` > `application.yml` file to connect to your MySQL database.
 
-Obs: 
-- O username e o password precisam ser os mesmos da sua base de dados local
-- Por padrão, o username é `root` e o password é `abc`
+Note:
+- The `username` and `password` must match your local database credentials.
+- By default, the username is `root` and the password is `abc`.
 
-```
+```yaml
 spring:
     datasource:
         url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/quickcheck?serverTimezone=UTC}
@@ -26,33 +26,33 @@ spring:
         password: ${JDBC_DATABASE_PASSWORD:abc}
 ```
 
-Para inserir os dados mockados pela primeira vez, abra o arquivo `QuickcheckApplication.java` e altere o valor da variável `firstLoad` para `true`
+To insert the mock data for the first time, open the `QuickcheckApplication.java` file and set the `firstLoad` variable to `true`.
 
-Após inserir os dados, reverter a alteração (muda o valor de `firstLoad` para `false`)
+After inserting the data, revert the change (set `firstLoad` back to `false`).
 
-Em seguida, no arquivo `QuickcheckApplication.java`, execute a aplicação (atalho: Shift + F10)
+Next, run the application in the `QuickcheckApplication.java` file (shortcut: Shift + F10).
 
-Obs: Lombok deve estar configurado na IDE. 
-Se estiver usando o IntelliJ, instale o plugin `Lombok` e habilite `annotation processing` nas configurações -
-[ver mais](https://bootify.io/next-steps/spring-boot-with-lombok.html).
+Note: Lombok must be configured in the IDE.  
+If using IntelliJ, install the `Lombok` plugin and enable `annotation processing` in the settings —  
+[see more](https://bootify.io/next-steps/spring-boot-with-lombok.html).
 
-Após, a API estará disponível no endereço `localhost:8080`.
+After that, the API will be available at `localhost:8080`.
 
-## Para adicionar novas rotas
+## Adding new routes
 
-Modifique o arquivo `repo` da entidade desejada (e.g. `HorarioRepository`), usando o link abaixo como referẽncia:
+Edit the `repo` file of the desired entity (e.g., `HorarioRepository`), using the link below as a reference:
 
     https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
 
-Em seguida, modifique o arquivo `service` respectivo (e.g. `HorarioService`) para adicionar regras de negócio e de validação.
+Next, edit the respective `service` file (e.g., `HorarioService`) to add business logic and validation rules.
 
-Finalmente, modifique o arquivo resource (e.g. `HorarioResource`) para adicionar a rota desejada e os parâmetros a serem utilizados.
+Finally, modify the `resource` file (e.g., `HorarioResource`) to add the desired route and the parameters to be used.
 
-Em resumo:
+In summary:
 
     repo > service > resource
 
-## Equipe
+## Team
 
 - Flávio Raposo
 - João Pedro Marinho
@@ -62,7 +62,7 @@ Em resumo:
 - Rian Vinícius
 - Robério José
 
-## Referências
+## References
 
 * [Maven docs](https://maven.apache.org/guides/index.html)  
 * [Spring Boot reference](https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/)  
